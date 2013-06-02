@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+ 
+<struts>
+<!-- 配置了系列常量 -->
+	<constant name="struts.i18n.encoding" value="GBK"/>	
+	<constant name="struts.devMode" value="true"/>	
+		
+	<package name="default" extends="struts-default" >
+	
+	<interceptors>
+			<interceptor name="mgrAuth"	class=
+			"com.dms.action.authority.MgrAuthorityInterceptor"/>
+			<interceptor-stack name="mgrStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="mgrAuth"/>
+			</interceptor-stack>
+		</interceptors>
+	
+		<global-results>
+			<!-- 定义sql、root两个异常对应的视图页 -->
+			<result name="root">/WEB-INF/content/error.jsp</result>
+			<!-- 定义login逻辑视图对应的视图资源 -->
+			<result name="login">/WEB-INF/content/index.jsp</result>
+		</global-results>
+		
+		<!-- 定义全局异常映射 -->
+		<global-exception-mappings>
+			<exception-mapping exception="java.lang.Exception" 
+				result="root"/>
+		</global-exception-mappings>
+	
+		<action name="processLogin" 
+		class="com.dms.action.LoginAction" >
+			<result name="success">/WEB-INF/content/mgr/index.jsp</result>
+			<result name="error">/WEB-INF/content/index.jsp</result>
+			<result name="input">/WEB-INF/content/index.jsp</result>
+		</action>
+		
+		
+		<action name="*User" class="com.dms.action.ViewUserDetailAction" method="{1}User" >	
+			<interceptor-ref name="mgrStack"/>
+			<result name="input">/WEB-INF/content/mgr/index.jsp</result>
+			<result>/WEB-INF/content/mgr/index.jsp</result>
+		</action>
+		
+		<action name="*Org" class="com.dms.action.ViewOrgDetailAction" method="{1}Org">
+			<interceptor-ref name="mgrStack"/>
+			<result name="success" type="chain">
+				<param name="actionName">viewOrg</param>
+			</result>
+		</action>
+		
+		<action name="viewOrg" 
+		class="com.dms.action.ViewOrgAction">
+			<result name="success">/WEB-INF/content/mgr/viewOrgMgr.jsp</result>
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="input">/WEB-INF/content/index.jsp</result>
+		</action>
+			
+		<action name="uploadPro" class="com.dms.action.UploadAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/bmp,
+				image/png,image/gif,image/jpeg,image/jpg   
+				,image/x-png, image/pjpeg, application/msword</param>
+				<param name="maximumSize">1024000</param> 
+			</interceptor-ref> 
+			<interceptor-ref name="defaultStack"/>
+			<result type="redirectAction">
+				<param name="actionName">fileMgr</param>
+			</result>
+			<result name="input">/WEB-INF/content/error.jsp</result>
+		</action>
+				
+		<action name="downloadPro" class="com.dms.action.DownloadAction">  
+            <result name="success" type="stream">  
+                <param name="contentType">application/octet-stream</param>  
+                <!-- 要有相对应的getDownloadFile()方法返回值是 InputStream -->  
+                <param name="inputName">downloadFile</param>  
+                <param name="contentDisposition">filename="${fileName}"</param>  
+                <param name="bufferSize">4096</param>  
+            </result>  
+        </action> 
+		
+		<action name="fileMgr" class="com.dms.action.FileListAction">  
+            <result name="success" >/WEB-INF/content/mgr/fileMgr.jsp</result>  
+        </action>  
+		
+		<action name="orgDetail" class="com.dms.action.ViewOrgDetailAction">
+			<interceptor-ref name="mgrStack"/>
+			<result name="success">/WEB-INF/content/mgr/viewOrgDetail.jsp</result>
+		</action>
+		
+		<action name="viewUser" 
+		class="com.dms.action.ViewUserAction">
+			<result name="success">/WEB-INF/content/mgr/viewUserMgr.jsp</result>
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="input">/WEB-INF/content/index.jsp</result>
+		</action>
+		
+		<action name="logout" 
+			class="com.dms.action.LogoutAction">
+			<result>/WEB-INF/content/main.jsp</result>
+		</action>
+		
+		<!-- ************************************************************************** -->
+
+		
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+	
+	</package>
+	
+		
+</struts>    

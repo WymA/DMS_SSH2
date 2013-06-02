@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="WJGL"
+  id="myeclipse.1358401491018"
+  context-root="/WJGL"
+  j2ee-spec="6.0"
+  archive="WJGL.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

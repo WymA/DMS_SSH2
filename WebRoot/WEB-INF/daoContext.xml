@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- 指定Spring配置文件的Schema信息 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- 配置DAO组件的模板 -->
+	<bean id="daoTemplate" abstract="true" lazy-init="true"
+		p:sessionFactory-ref="sessionFactory"/>
+
+	<bean id="userDao" 
+	class="com.dms.dao.impl.UserDaoHibernate"
+	parent="daoTemplate"/>	
+	
+	<bean id="roleDao" 
+	class="com.dms.dao.impl.RoleDaoHibernate"
+	parent="daoTemplate"/>	
+	
+	<bean id="privilegeDao" 
+	class="com.dms.dao.impl.PrivilegeDaoHibernate"
+	parent="daoTemplate"/>	
+	
+	<bean id="orgDao" 
+	class="com.dms.dao.impl.OrgDaoHibernate"
+	parent="daoTemplate"/>	
+		
+	<bean id="branchDao" 
+	class="com.dms.dao.impl.BranchDaoHibernate"
+	parent="daoTemplate"/>	
+	
+	<bean id="fileDao" 
+	class="com.dms.dao.impl.FileDaoHibernate"
+	parent="daoTemplate"/>	
+
+</beans>

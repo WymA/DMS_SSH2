@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dms.domain">
+ <class dynamic-insert="true" dynamic-update="true" name="User" table="users">
+  <!-- 映射标识属性 -->
+  <id column="id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <version name="version" column="version" type="int" />
+  <!-- 映射普通属性 -->
+  <property generated="never" name="username" type="string" unique="true" >
+   <column name="username"/>
+  </property>
+  <property generated="never" name="password"  type="string">
+   <column name="password"/>
+  </property>
+   <set name="role" table="users_roles" inverse="false">
+  	<key column="user_id" />
+  	<many-to-many class="Role" column="role_id"  unique="true"/>
+  </set>
+	<many-to-one name="branch" class="Branch" 
+		column="branch_id" />
+	<many-to-one name="org" class="Org" 
+		column="org_id" />
+
+ </class>
+</hibernate-mapping>

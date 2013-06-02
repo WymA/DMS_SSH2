@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="default" location="675,10" size="1505,1645">
+    <action name="processLogin" location="1290,61" size="150,104">
+      <result name="mgr">
+        <resourceEdge source="mgr" routing="0" target="index.jsp" />
+      </result>
+      <result name="user">
+        <resourceEdge source="user" routing="0" target="index.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="index.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="*User" location="1290,362" size="150,62">
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="index.jsp" />
+      </result>
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="*Org" location="1290,687" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewOrg" namespace="" />
+      </result>
+    </action>
+    <action name="viewOrg" location="1290,526" size="150,83">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewOrgMgr.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="uploadPro" location="1045,782" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="fileMgr" namespace="" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="downloadPro" location="1045,1422" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="fileMgr" location="1290,782" size="150,62">
+      <result name="mgr">
+        <resourceEdge source="mgr" routing="0" target="fileMgr.jsp" />
+      </result>
+      <result name="user">
+        <resourceEdge source="user" routing="0" target="fileMgr.jsp" />
+      </result>
+    </action>
+    <action name="orgDetail" location="800,1422" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewOrgDetail.jsp" />
+      </result>
+    </action>
+    <action name="createUser" location="555,1422" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="create" location="310,1422" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="createUser.jsp" />
+      </result>
+    </action>
+    <action name="viewUser" location="65,1401" size="150,83">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewUserMgr.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+      <result name="input">
+        <resourceEdge source="input" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="logout" location="65,1282" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="main.jsp" />
+      </result>
+    </action>
+    <action name="orgInfo" location="65,1177" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewOrgInfo.jsp" />
+      </result>
+    </action>
+    <action name="viewOrgInfo" location="65,1072" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewOrg.jsp" />
+      </result>
+    </action>
+    <action name="personal" location="65,967" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="viewUser.jsp" />
+      </result>
+    </action>
+    <action name="*" location="65,862" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="{1}.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.jsp" path="/WEB-INF/content/mgr/index.jsp" location="2525,1767" size="150,55" />
+  <webResource name="index.jsp" path="/WEB-INF/content/user/index.jsp" location="460,297" size="150,55" />
+  <webResource name="index.jsp" path="/WEB-INF/content/index.jsp" location="75,437" size="150,55" />
+  <webResource name="viewOrgMgr.jsp" path="/WEB-INF/content/mgr/viewOrgMgr.jsp" location="2245,542" size="150,55" />
+  <webResource name="error.jsp" path="/WEB-INF/content/error.jsp" location="215,787" size="150,55" />
+  <webResource name="fileMgr.jsp" path="/WEB-INF/content/mgr/fileMgr.jsp" location="1965,1697" size="150,55" />
+  <webResource name="fileMgr.jsp" path="/WEB-INF/content/user/fileMgr.jsp" location="2245,787" size="150,55" />
+  <webResource name="viewOrgDetail.jsp" path="/WEB-INF/content/mgr/viewOrgDetail.jsp" location="1475,1697" size="150,55" />
+  <webResource name="createUser.jsp" path="/WEB-INF/content/mgr/createUser.jsp" location="985,1697" size="150,55" />
+  <webResource name="viewUserMgr.jsp" path="/WEB-INF/content/mgr/viewUserMgr.jsp" location="460,1522" size="150,55" />
+  <webResource name="main.jsp" path="/WEB-INF/content/main.jsp" location="460,1277" size="150,55" />
+  <webResource name="viewOrgInfo.jsp" path="/WEB-INF/content/user/viewOrgInfo.jsp" location="460,1172" size="150,55" />
+  <webResource name="viewOrg.jsp" path="/WEB-INF/content/user/viewOrg.jsp" location="460,1067" size="150,55" />
+  <webResource name="viewUser.jsp" path="/WEB-INF/content/user/viewUser.jsp" location="460,962" size="150,55" />
+  <webResource name="{1}.jsp" path="/WEB-INF/content/{1}.jsp" location="460,857" size="150,55" />
+</Struts2Diagram>
+

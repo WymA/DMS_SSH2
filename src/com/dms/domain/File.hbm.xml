@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.dms.domain">
+ <class dynamic-insert="true" dynamic-update="true" name="Files" table="files">
+  <!-- 映射标识属性 -->
+  <id column="id" name="id" type="integer">
+   <generator class="identity"/>
+  </id>
+  <version name="version" column="version" type="int" />
+    
+  <property generated="never" name="fileName"  type="string">
+   <column name="fileName"/>
+  </property>
+  
+  <join table="file_org">
+  	<key column="file_id"/>
+  	<many-to-one name="org" column="org_id" />
+  </join>
+  
+ </class>
+</hibernate-mapping>
